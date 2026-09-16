@@ -19,3 +19,4 @@ error_log.txt
 # Build artifacts and Vendor
 vendor/
 node_modules/
+SEO_GUIDE.md
