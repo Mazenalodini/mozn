@@ -1,0 +1,21 @@
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Sensitive Configuration
+config.php
+.env
+reset_db.php
+
+# Logs and Caches
+logs/*
+!logs/.gitkeep
+error_log.txt
+*.log
+
+# Build artifacts and Vendor
+vendor/
+node_modules/

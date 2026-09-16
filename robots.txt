@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /cart.php
+Disallow: /checkout.php
+
+Sitemap: https://mozn.infinityfree.me/sitemap.xml
