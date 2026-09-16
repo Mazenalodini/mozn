@@ -1,84 +1,141 @@
-# Mozn E-Commerce Platform
+# Mozn
 
-Mozn is a comprehensive, feature-rich E-Commerce platform built with PHP and MySQL. It is designed to provide a robust shopping experience with an integrated machine learning component for predicting purchase intentions.
+Mozn is a full-stack e-commerce platform built with PHP and MySQL, providing a complete shopping experience for customers and administrators. The platform includes user authentication, product management, shopping cart and checkout workflows, order management, reviews, wishlist, coupons, customer addresses, and an administration dashboard.
 
-## 🚀 Features
+The project also includes a standalone Python-based machine learning module for predicting online shopper purchase intention using session and behavioral data.
 
-- **User Authentication:** Secure registration, login, and profile management for users and administrators.
-- **Product Catalog:** Browse, view details, and manage products.
-- **Shopping Cart & Checkout:** Seamless cart management and order processing.
-- **AI-Powered Insights:** Python-based machine learning module for online shopper purchase-intention prediction.
-- **Admin Dashboard:** Full control over categories, products, users, and orders.
-- **SEO Ready:** Optimized structure with `sitemap.xml` and `robots.txt` out of the box.
+## Features
 
-## 🛠️ Technology Stack
+* **User Authentication** — Registration, login, logout, session management, profile management, and role-based access control.
+* **Product Catalog** — Product browsing, product details, categories, search, filtering, sorting, pricing, and image management.
+* **Shopping Cart & Checkout** — Session-based cart management, quantity updates, discount handling, checkout, and order creation.
+* **Order Management** — Order records, order items, order status management, order history, and shipping addresses.
+* **Wishlist & Reviews** — Product wishlists, ratings, and customer reviews.
+* **Coupon System** — Percentage-based and fixed-value discounts with expiration dates.
+* **Admin Dashboard** — Administrative tools for product management and store activity monitoring.
+* **Bilingual Interface** — Arabic and English localization with RTL/LTR layout support.
+* **Responsive UI** — Responsive layouts, dark-mode support, and interactive frontend components.
+* **Machine Learning Module** — Python-based purchase-intention prediction using online shopper behavioral data.
+* **Technical SEO** — Includes `robots.txt` and `sitemap.xml` to support search-engine discoverability.
 
-- **Backend:** PHP
-- **Database:** MySQL / MariaDB
-- **Frontend:** HTML, CSS, JavaScript (Vanilla)
-- **Machine Learning:** Python, scikit-learn, pandas (Pickled models loaded via `Prediction_script.py`)
+## Technology Stack
 
-## 📁 Project Structure
+**Backend**
+
+* PHP
+* PDO
+
+**Database**
+
+* MySQL / MariaDB
+
+**Frontend**
+
+* HTML5
+* Tailwind CSS
+* Alpine.js
+* JavaScript
+
+**Machine Learning**
+
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Joblib
+
+## Project Structure
 
 ```text
 mozn/
-├── admin/               # Admin dashboard and management scripts
-├── ai/                  # ML models, datasets, and prediction scripts
-├── assets/              # Static assets (CSS, JS, Images)
-├── includes/            # Reusable PHP components (Header, Footer, Mail, etc.)
-├── logs/                # System and email logs
-├── index.php            # Main homepage
-├── shop.php             # Product catalog page
-├── product.php          # Single product view
-├── cart.php             # Shopping cart
-├── checkout.php         # Checkout process
-└── database.sql         # Database schema and seed data
+├── admin/                 # Administration dashboard and management functionality
+├── ai/                    # Machine learning scripts, models, and dataset
+├── assets/                # CSS, JavaScript, and image assets
+├── includes/              # Shared PHP components and application helpers
+├── logs/                  # Local runtime logs (not committed)
+├── index.php              # Application homepage
+├── shop.php               # Product catalog
+├── product.php            # Product details
+├── cart.php               # Shopping cart
+├── checkout.php           # Checkout and order creation
+├── profile.php            # User profile and account management
+├── wishlist.php           # Wishlist
+├── login.php              # User login
+├── register.php           # User registration
+├── database.sql           # Database schema and demo data
+├── config.example.php     # Example application configuration
+├── robots.txt             # Search-engine crawling rules
+└── sitemap.xml            # XML sitemap
 ```
 
-## ⚙️ Setup & Installation
+## Setup
 
-### Prerequisites
-- Web Server (Apache/Nginx) with PHP 7.4 or 8.x.
-- MySQL or MariaDB Database.
-- Python 3.x (optional, only if retraining the ML model).
+### Requirements
 
-### Installation Steps
+* PHP 7.4 or later
+* MySQL or MariaDB
+* Apache or Nginx
+* Python 3.x for working with the machine learning module
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/<USERNAME>/<REPOSITORY>.git
-   cd mozn
-   ```
+### Installation
 
-2. **Database Setup:**
-   - Create a new MySQL database (e.g., `mozn_db`).
-   - Import the `database.sql` file into your newly created database.
+1. Clone the repository:
 
-3. **Configuration:**
-   - Copy `config.example.php` to `config.php`.
-   - Update the database credentials in `config.php`:
-     ```php
-     define('DB_HOST', 'localhost');
-     define('DB_USER', 'your_username');
-     define('DB_PASS', 'your_password');
-     define('DB_NAME', 'mozn_db');
-     ```
+```bash
+git clone https://github.com/Mazenalodini/mozn.git
+cd mozn
+```
 
-4. **Running the Application:**
-   - Place the project folder in your web server's root directory (e.g., `htdocs` for XAMPP or `public_html`).
-   - Access the site via your browser at `http://localhost/mozn` (or your configured local domain).
+2. Create a MySQL or MariaDB database.
 
-## 🧠 Machine Learning Component
+3. Import `database.sql` into the newly created database.
 
-The `ai/` directory contains an ML model that predicts whether a visitor will make a purchase based on their session metrics.
-- The model is pre-trained and saved as `shopper_model.pkl`.
-- To generate predictions, the system uses `Prediction_script.py`, which processes incoming user data and outputs a purchase probability.
+4. Create `config.php` from `config.example.php`.
 
-## 📄 Documentation
+5. Update the database configuration for your local environment:
 
-- [Deployment Guide](DEPLOYMENT.md)
-- [SEO Guide](SEO_GUIDE.md)
+```php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'your_username');
+define('DB_PASS', 'your_password');
+define('DB_NAME', 'mozn_db');
+```
 
-## 🔒 Security Note
+6. Configure the application URL and environment settings as required.
 
-Please ensure that `config.php`, `logs/`, and `reset_db.php` (if applicable) are securely handled and never exposed publicly.
+7. Place the project in your PHP web server directory and open the application through your configured local URL.
+
+## Machine Learning
+
+The `ai/` directory contains a standalone machine learning component for online shopper purchase-intention prediction.
+
+The module includes:
+
+* `Training_script.py` — Model training and preprocessing workflow.
+* `Prediction_script.py` — Prediction and inference workflow.
+* `online_shoppers_intention.csv` — Shopper behavior dataset.
+* `shopper_model.pkl` — Trained Random Forest model.
+* `le_month.pkl` — Saved month encoder.
+* `le_visitor.pkl` — Saved visitor-type encoder.
+
+The prediction pipeline processes session and behavioral features to estimate purchase intention.
+
+## Database
+
+The application uses a relational MySQL/MariaDB database containing entities for:
+
+* Users
+* Categories
+* Products
+* Orders
+* Order Items
+* Reviews
+* Wishlist
+* Coupons
+* Addresses
+
+The included `database.sql` provides the database schema and demo data for local or demonstration setup.
+
+## Documentation
+
+* [Deployment Guide](DEPLOYMENT.md)
